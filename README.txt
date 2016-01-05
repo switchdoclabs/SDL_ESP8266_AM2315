@@ -4,7 +4,11 @@
 
   This works for both the SwitchDoc Labs AM2315 and the Adafruit AM2315
 
+  Note:  There are ESP8266-12 modules that have pins 4 and 5 reversed.   The one we are testing has these lines reversed, hence the statement:
 
+  Wire.begin(5,4);
+
+  If you have the lines in your ESP8266 correct, then change this to Wire.begin(4,5)
 
 This is a library for the AM2315 Humidity + Temp sensor
 
