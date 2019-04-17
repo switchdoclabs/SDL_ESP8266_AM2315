@@ -65,11 +65,14 @@ boolean Adafruit_AM2315::readData(void) {
   humidity /= 10;
   //Serial.print("H"); Serial.println(humidity);
 
-  temp = reply[4];
+  temp = reply[4] & 0x7F;
   temp *= 256;
   temp += reply[5];
   temp /= 10;
   //Serial.print("T"); Serial.println(temp);
+
+  // change sign
+  if (reply[4] >> 7) temp = -temp;
 
   return true;
 }
